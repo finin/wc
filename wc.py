@@ -40,7 +40,7 @@ mylemma = {'datasets':'dataset','modelling':'model','modeling':'model','computin
            'clustering':'cluster', 'svns':'svn', 'learning':'learn','reasoner':'reason','reasoning':'reason'}
 
 # idf data from Paul McNamee from newswire
-from idf200 import idf, idf_dict
+# from idf200 import idf, idf_dict
 
 pdftotext = '/usr/bin/pdftotext'
 
@@ -200,7 +200,7 @@ def good(w):
                        (w in whitelist or \
                         (not pdfcrap(w) and \
                          not rebad.match(w) and \
-                         (w in idf_dict or \
+                         (#w in idf_dict or \
                           (not skip_oov and \
                            not_all_dig_or_punct(w) and \
                            not w.startswith('http') and \
@@ -211,7 +211,8 @@ def good(w):
     
 
 def oov(w):
-    return not ( (w in whitelist) or w in idf_dict)
+    #return not ( (w in whitelist) or w in idf_dict)
+    return False
 
 def is_ascii(s):
     """ Returns True if every character in string s is an ascii character. """
